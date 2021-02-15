@@ -4,6 +4,12 @@
 
 namespace Marvel {
 
+	struct mvDataPickerConfig : public mvAppItemConfig
+	{
+		std::map<std::string, int> default_value = { {"month_day", 14}, {"year",20}, {"month", 5} };
+		int level = 0;
+	};
+
 	PyObject* add_date_picker(PyObject* self, PyObject* args, PyObject* kwargs);
 
 	class mvDatePicker : public mvTimePtrBase

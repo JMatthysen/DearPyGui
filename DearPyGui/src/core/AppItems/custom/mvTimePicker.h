@@ -4,6 +4,13 @@
 
 namespace Marvel {
 
+	struct mvTimePickerConfig : public mvAppItemConfig
+	{
+		std::map<std::string, int> default_value = { {"hour", 14}, {"min" , 32}, {"sec" , 23} };
+		bool hour24 = false;
+
+	};
+
 	PyObject* add_time_picker(PyObject* self, PyObject* args, PyObject* kwargs);
 
 	class mvTimePicker : public mvTimePtrBase

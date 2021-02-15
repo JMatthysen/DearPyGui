@@ -5,6 +5,8 @@
 
 namespace Marvel {
 
+	struct mvDrawingConfig : public mvAppItemConfig {};
+
 	PyObject* add_drawing(PyObject* self, PyObject* args, PyObject* kwargs);
 
 	class mvDrawing : public mvAppItem
