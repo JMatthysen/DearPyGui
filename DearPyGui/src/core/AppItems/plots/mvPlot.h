@@ -20,7 +20,129 @@
 //-----------------------------------------------------------------------------
 
 namespace Marvel {
+
+	struct mvPlotConfig : public mvAppItemConfig
+	{
+		std::string x_axis_name = "";
+		std::string y_axis_name = "";
+
+		// plot flags
+		bool no_legend = false;
+		bool no_menus = false;
+		bool no_box_select = false;
+		bool no_mouse_pos = false;
+		bool no_highlight = false;
+		bool no_child = false;
+		bool query = false;
+		bool crosshairs = false;
+		bool anti_aliased = false;
+		bool equal_aspects = false;
+		bool yaxis2 = false;
+		bool yaxis3 = false;
+
+		// x axis flags
+		bool xaxis_no_gridlines = false;
+		bool xaxis_no_tick_marks = false;
+		bool xaxis_no_tick_labels = false;
+		bool xaxis_log_scale = false;
+		bool xaxis_time = false;
+		bool xaxis_invert = false;
+		bool xaxis_lock_min = false;
+		bool xaxis_lock_max = false;
+
+		// y axis flags
+		bool yaxis_no_gridlines = false;
+		bool yaxis_no_tick_marks = false;
+		bool yaxis_no_tick_labels = false;
+		bool yaxis_log_scale = false;
+		bool yaxis_invert = false;
+		bool yaxis_lock_min = false;
+		bool yaxis_lock_max = false;
+
+		// y2 axis flags
+		bool y2axis_no_gridlines = false;
+		bool y2axis_no_tick_marks = false;
+		bool y2axis_no_tick_labels = false;
+		bool y2axis_log_scale = false;
+		bool y2axis_invert = false;
+		bool y2axis_lock_min = false;
+		bool y2axis_lock_max = false;
+
+		// y3 axis flags
+		bool y3axis_no_gridlines = false;
+		bool y3axis_no_tick_marks = false;
+		bool y3axis_no_tick_labels = false;
+		bool y3axis_log_scale = false;
+		bool y3axis_invert = false;
+		bool y3axis_lock_min = false;
+		bool y3axis_lock_max = false;
+
+		mvCallable query_callback = none;
+
+		bool show_color_scale = false;
+		float scale_min = 0.0;
+		float scale_max = 1.0;
+		int scale_height = 100;
+		bool show_annotation = true;
+		bool show_drag_lines = true;
+		bool show_drag_points = true;
+
+		mvPlotConfig()
+		{
+			int width = -1;
+			int height = -1;
+		}
+
+	};
 	
+	struct mvAddDragLineConfig : public mvAppItemConfig
+	{
+		std::string plot;
+		mvColor color{ 0, 0, 0, -1 };
+		float thickness = -1;
+		bool y_line = false;
+		bool show_label = true;
+		float default_value = 0.0;
+	};
+
+	struct mvDeleteDragLineConfig : public mvAppItemConfig
+	{
+		std::string plot;
+	};
+
+	struct mvAddDragPointConfig : public mvAppItemConfig
+	{
+		std::string plot;
+		mvColor color{ 0, 0, 0, -1 };
+		float radius = 4.0;
+		bool show_label = true;
+		float default_x = 0.0;
+		float default_y = 0.0;
+	};
+
+	struct mvDeleteDragPointConfig : public mvAppItemConfig
+	{
+		std::string plot;
+	};
+
+	struct mvAddAnnotation : public mvAppItemConfig
+	{
+		std::string plot;
+		std::string text;
+		double x;
+		double y;
+		float xoffset;
+		float yoffset;
+		mvColor color{ 0,0,0,-1 };
+		bool clamped = true;
+		std::string tag = "";
+	};
+
+	struct mvDeleteAnnotationConfig : public mvAppItemConfig
+	{
+		std::string plot;
+	};
+
 	PyObject* add_plot         (PyObject* self, PyObject* args, PyObject* kwargs);
 	PyObject* add_drag_point   (PyObject* self, PyObject* args, PyObject* kwargs);
 	PyObject* delete_drag_point(PyObject* self, PyObject* args, PyObject* kwargs);

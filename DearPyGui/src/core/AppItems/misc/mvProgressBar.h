@@ -4,6 +4,12 @@
 
 namespace Marvel {
 
+	struct mvProgressBarConfig : public mvAppItemConfig
+	{
+		float default_value = 0.0;
+		std::string overlay = "";
+	};
+
 	PyObject* add_progress_bar(PyObject* self, PyObject* args, PyObject* kwargs);
 
 	class mvProgressBar : public mvFloatPtrBase
